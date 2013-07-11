@@ -1,2 +1,7 @@
 logs/*
 !.gitkeep
+venv/
+config.py
+alembic.ini
+*.pyc
+*.swp
