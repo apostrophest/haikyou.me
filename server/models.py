@@ -5,6 +5,7 @@ from api import db
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime, default=datetime.utcnow)
+    last_updated = db.Column(db.DateTime, default=datetime.utcnow)
     email = db.Column(db.String(64), unique=True)
     nickname = db.Column(db.String(32), unique=True)
     description = db.Column(db.Text)
@@ -18,9 +19,11 @@ class User(db.Model):
 
 class Haiku(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.DateTime, default=datetime.utcnow())
+    date = db.Column(db.DateTime, default=datetime.utcnow)
+    last_updated = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
+    
+    title = db.Column(db.String(64))
     first_line = db.Column(db.Text) 
     second_line = db.Column(db.Text) 
     third_line = db.Column(db.Text) 
